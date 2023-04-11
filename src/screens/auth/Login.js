@@ -1,24 +1,27 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
+  SafeAreaView,
   StyleSheet,
   Text,
-  View,
   TextInput,
-  SafeAreaView,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {COLORS, ROUTES} from '../../constants';
 import Logo from '../../assets/icons/LOGO.svg';
+import { COLORS, ROUTES } from '../../constants';
 
 const Login = () => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.main}>
       <View style={styles.container}>
         <View style={styles.wFull}>
           <View style={styles.row}>
-            <Logo width={55} height={55} style={styles.mr7} />
-            <Text style={styles.brandName}>Olors</Text>
+            <Logo width={40} height={40} style={styles.mr7} />
+            <Text style={styles.brandName}>Colors</Text>
           </View>
 
           <Text style={styles.loginContinueTxt}>Login in to continue</Text>
@@ -29,17 +32,21 @@ const Login = () => {
             <LinearGradient
               colors={[COLORS.gradientForm, COLORS.primary]}
               style={styles.linearGradient}
-              start={{y: 0.0, x: 0.0}}
-              end={{y: 1.0, x: 0.0}}>
+              start={{ y: 0.0, x: 0.0 }}
+              end={{ y: 1.0, x: 0.0 }}>
               {/******************** LOGIN BUTTON *********************/}
-              <TouchableOpacity activeOpacity={0.7} style={styles.loginBtn}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate(ROUTES.HOME)}
+                activeOpacity={0.7}
+                style={styles.loginBtn}>
                 <Text style={styles.loginText}>Log In</Text>
               </TouchableOpacity>
             </LinearGradient>
           </View>
 
           {/***************** FORGOT PASSWORD BUTTON *****************/}
-          <TouchableOpacity style={styles.forgotPassBtn}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(ROUTES.FORGOT_PASSWORD)}>
             <Text style={styles.forgotPassText}>Forgot Password?</Text>
           </TouchableOpacity>
         </View>
@@ -47,7 +54,8 @@ const Login = () => {
         <View style={styles.footer}>
           <Text style={styles.footerText}> Don't have an account? </Text>
           {/******************** REGISTER BUTTON *********************/}
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(ROUTES.REGISTER)}>
             <Text style={styles.signupBtn}>Sign Up</Text>
           </TouchableOpacity>
         </View>

@@ -1,10 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 const ForgotPassword = () => {
   return (
     <View style={styles.container}>
-      <Text>ForgotPassword</Text>
+      <Text>Forgot Password</Text>
     </View>
   );
 };
