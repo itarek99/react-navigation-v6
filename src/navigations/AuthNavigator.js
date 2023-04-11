@@ -7,11 +7,19 @@ const Stack = createStackNavigator();
 
 const AuthNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name={ROUTES.LOGIN} component={Login} />
+    <Stack.Navigator>
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name={ROUTES.LOGIN}
+        component={Login}
+      />
       <Stack.Screen name={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
       <Stack.Screen name={ROUTES.REGISTER} component={Register} />
-      <Stack.Screen name={ROUTES.HOME} component={BottomTabNavigator} />
+      <Stack.Screen
+        name={ROUTES.HOME}
+        options={{ headerShown: false }}
+        component={BottomTabNavigator}
+      />
     </Stack.Navigator>
   );
 };

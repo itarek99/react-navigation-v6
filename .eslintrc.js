@@ -5,5 +5,6 @@ module.exports = {
     'prettier/prettier': 0,
     'react/react-in-jsx-scope': 'off',
     'react/no-unstable-nested-components': 'off',
+    'react-native/no-inline-styles': 'off',
   },
 };
