@@ -1,5 +1,6 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
+import CustomDrawer from '../components/CustomDrawer';
 import { COLORS, ROUTES } from '../constants';
 import { Notifications, Wallet } from '../screens';
 import BottomTabNavigator from './BottomTabNavigator';
@@ -9,8 +10,10 @@ const Drawer = createDrawerNavigator();
 function DrawerNavigator() {
   return (
     <Drawer.Navigator
+      drawerContent={props => <CustomDrawer {...props} />}
       screenOptions={{
         drawerActiveBackgroundColor: COLORS.primary,
+        headerShown: false,
         drawerActiveTintColor: COLORS.white,
         drawerLabelStyle: {
           marginLeft: -20,

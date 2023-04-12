@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StyleSheet } from 'react-native';
+import { Platform, Pressable, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomTabBar from '../components/CustomTabBar';
 import CustomTabBarButton from '../components/CustomTabBarButton';
@@ -9,7 +9,7 @@ import SettingsNavigator from './SettingsNavigator';
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabNavigator = () => {
+const BottomTabNavigator = ({ navigation }) => {
   return (
     <Tab.Navigator
       tabBar={props => <CustomTabBar {...props} />}
@@ -69,6 +69,19 @@ const BottomTabNavigator = () => {
         component={SettingsNavigator}
         options={{
           tabBarLabel: 'Settings',
+          headerShown: true,
+          title: 'Settings',
+          headerRight: () => (
+            <Pressable
+              onPress={() => navigation.openDrawer()}
+              style={{ padding: 6 }}>
+              <Icon
+                name={Platform.OS === 'ios' ? 'ios-menu' : 'md-menu'}
+                size={34}
+                color={COLORS.dark}
+              />
+            </Pressable>
+          ),
           tabBarButton: props => (
             <CustomTabBarButton route="settings" {...props} />
           ),
